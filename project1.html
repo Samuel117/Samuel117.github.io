@@ -3,6 +3,22 @@ layout: default
 ---
 <!doctype html>
 <html>
+
+<style>
+  /* Estilo para las imágenes */
+  .imagen {
+      width: 300px; /* Ancho de cada imagen */
+      object-fit: cover; /* Escalar la imagen para que se ajuste al tamaño */
+      margin: 5px; /* Margen entre las imágenes */
+  }
+  /* Estilo para el contenedor principal */
+  .contenedor {
+      display: flex; /* Mostrar los elementos en línea */
+      flex-wrap: wrap; /* Permitir que los elementos se envuelvan si no hay suficiente espacio */
+      justify-content: center; /* Centrar los elementos horizontalmente */
+  }
+</style>
+
   <head>
     <title>¿Por qué la gallina cruzó la calle?</title>
   </head>
@@ -14,8 +30,16 @@ layout: default
     </p>
 
     <p>The project earned recognition from Amber Studio, who awarded us for excellence in narrative, development management, 
-        and production, highlighting our team's ability to deliver a compelling and well-managed gaming experience.</p>
+        and production, highlighting our team's ability to deliver a compelling and well-managed gaming experience.
+    </p>
     
+      <div class="contenedor">
+        <img class="imagen" src="DIPLOMA GGJ 2024 - SAMUEL PADILLA ESQUEDA-1.png" alt="Imagen 1">
+        <img class="imagen" src="DIPLOMA_DEVELOPMENT_MANAGEMENT_-_POR_QUE_LA_GALLINA_CRUZO_LA_CALLE-1.png" alt="Imagen 2">
+        <img class="imagen" src="DIPLOMA_DEVELOPMENT_MANAGEMENT_-_POR_QUE_LA_GALLINA_CRUZO_LA_CALLE-1.png" alt="Imagen 3">
+        <img class="imagen" src="DIPLOMA_PRODUCCION_-_POR_QUE_LA_GALLINA_CRUZO_LA_CALLE-1.png" alt="Imagen 4">
+      </div>
+
     <!-- Example of an image tag in HTML -->
     <img src="DIPLOMA GGJ 2024 - SAMUEL PADILLA ESQUEDA-1.png" alt="Description of the image" width="500">
 
