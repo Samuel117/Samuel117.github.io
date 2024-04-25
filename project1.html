@@ -17,6 +17,25 @@ layout: default
       flex-wrap: wrap; /* Permitir que los elementos se envuelvan si no hay suficiente espacio */
       justify-content: center; /* Centrar los elementos horizontalmente */
   }
+
+  /* Estilo para la imagen ampliada */
+  .imagen-ampliada {
+            position: fixed; /* Fijar la posición de la imagen ampliada */
+            top: 0;
+            left: 0;
+            width: 100%; /* Ocupar todo el ancho de la ventana */
+            height: 100%; /* Ocupar toda la altura de la ventana */
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+            display: none; /* Ocultar la imagen ampliada inicialmente */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Asegurar que esté por encima de otros elementos */
+        }
+        /* Estilo para la imagen dentro de la imagen ampliada */
+        .imagen-ampliada img {
+            max-width: 90%; /* Limitar el tamaño máximo de la imagen */
+            max-height: 90%;
+        }
 </style>
 
   <head>
@@ -40,16 +59,32 @@ layout: default
         <img class="imagen" src="DIPLOMA_PRODUCCION_-_POR_QUE_LA_GALLINA_CRUZO_LA_CALLE-1.png" alt="Imagen 4">
       </div>
 
-    <!-- Example of an image tag in HTML -->
-    <img src="DIPLOMA GGJ 2024 - SAMUEL PADILLA ESQUEDA-1.png" alt="Description of the image" width="500">
+      <!-- Contenedor para la imagen ampliada -->
+    <div class="imagen-ampliada" id="imagenAmpliada">
+      <span class="cerrar" onclick="cerrarImagen()">X</span> <!-- Botón para cerrar la imagen ampliada -->
+      <img id="imagenAmpliadaSrc" src="" alt="Imagen Ampliada">
+  </div>
 
-     <!-- Example of an image tag in HTML -->
-     <img src="DIPLOMA_DEVELOPMENT_MANAGEMENT_-_POR_QUE_LA_GALLINA_CRUZO_LA_CALLE-1.png" alt="Description of the image" width="500">
+  <!-- Script para manejar el zoom de las imágenes -->
+  <script>
+      // Función para abrir la imagen ampliada
+      function abrirImagen(src) {
+          document.getElementById("imagenAmpliada").style.display = "flex"; // Mostrar la imagen ampliada
+          document.getElementById("imagenAmpliadaSrc").src = src; // Establecer la fuente de la imagen ampliada
+      }
 
-      <!-- Example of an image tag in HTML -->
-    <img src="DIPLOMA_NARRATIVA_-_POR_QUE_LA_GALLINA_CRUZO_LA_CALLE-1.png" alt="Description of the image" width="500">
+      // Función para cerrar la imagen ampliada
+      function cerrarImagen() {
+          document.getElementById("imagenAmpliada").style.display = "none"; // Ocultar la imagen ampliada
+      }
 
-     <!-- Example of an image tag in HTML -->
-     <img src="DIPLOMA_PRODUCCION_-_POR_QUE_LA_GALLINA_CRUZO_LA_CALLE-1.png" alt="Description of the image" width="500">
-
+      // Obtener todas las imágenes y agregar un evento clic a cada una para abrir la imagen ampliada
+      var imagenes = document.getElementsByClassName("imagen");
+      for (var i = 0; i < imagenes.length; i++) {
+          imagenes[i].addEventListener("click", function() {
+              abrirImagen(this.src);
+          });
+      }
+  </script>
   </body>
+</html>
