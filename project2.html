@@ -3,12 +3,121 @@ layout: default
 ---
 <!doctype html>
 <html>
+  <style>
+    /* Estilo para las imágenes */
+    .imagen {
+        width: 350px; /* Ancho de cada imagen */
+        object-fit: cover; /* Escalar la imagen para que se ajuste al tamaño */
+        margin: 5px; /* Margen entre las imágenes */
+    }
+    /* Estilo para el contenedor principal */
+    .contenedor {
+        display: flex; /* Mostrar los elementos en línea */
+        flex-wrap: wrap; /* Permitir que los elementos se envuelvan si no hay suficiente espacio */
+        justify-content: center; /* Centrar los elementos horizontalmente */
+    }
+  
+    /* Estilo para la imagen ampliada */
+    .imagen-ampliada {
+              position: fixed; /* Fijar la posición de la imagen ampliada */
+              top: 0;
+              left: 0;
+              width: 100%; /* Ocupar todo el ancho de la ventana */
+              height: 100%; /* Ocupar toda la altura de la ventana */
+              background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+              display: none; /* Ocultar la imagen ampliada inicialmente */
+              justify-content: center;
+              align-items: center;
+              z-index: 9999; /* Asegurar que esté por encima de otros elementos */
+          }
+          /* Estilo para la imagen dentro de la imagen ampliada */
+          .imagen-ampliada img {
+              max-width: 90%; /* Limitar el tamaño máximo de la imagen */
+              max-height: 90%;
+          }
+  
+          /* Estilo para el botón de cierre */
+          .cerrar {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              color: #fff;
+              font-size: 20px;
+              cursor: pointer;
+          }
+  
+          /* Estilo para el contenedor del video */
+          .contenedor-video {
+              display: flex; /* Utilizar flexbox para centrar el contenido */
+              justify-content: center; /* Centrar horizontalmente */
+              align-items: center; /* Centrar verticalmente */
+              height: 50vh; /* Altura del viewport */
+          }
+  
+          /* Estilo para el iframe del video */
+          iframe {
+              width: 560px; /* Ancho del video */
+              height: 315px; /* Altura del video */
+          }
+  </style>
+  
   <head>
-    <title>This is the title of the webpage!</title>
+    <title>Pan y Cebolla</title>
   </head>
   <body>
     <p>For a school assignment, I developed "Pan y Cebolla Demo," a 2D platform video game, from April to June 2023 using Unity and C#. 
         In this project, I was responsible for designing and integrating core gameplay mechanics, including player movement, dash functions, 
         and shooting capabilities. Additionally, I crafted and coded the game's introductory animation.
     </p>
+
+    <div class="contenedor">
+      <img class="imagen" src="pyc1.jpg" alt="Imagen 1">
+      <img class="imagen" src="pyc2.jpg" alt="Imagen 2">
+      <img class="imagen" src="pyc3.jpg" alt="Imagen 3">
+      <img class="imagen" src="pyc4.jpg" alt="Imagen 4">
+    </div>
+
+    <!-- Contenedor para la imagen ampliada -->
+  <div class="imagen-ampliada" id="imagenAmpliada">
+    <span class="cerrar" onclick="cerrarImagen()">X</span> <!-- Botón para cerrar la imagen ampliada -->
+    <img id="imagenAmpliadaSrc" src="" alt="Imagen Ampliada">
+  </div>
+
+    <h2>About the Game</h2>
+    <p>
+      "Pan y Cebolla" is a 2D platformer where a really hungry protagonist wakes up and embarks on an adventure to gather the best ingredients to make the perfect sandwich. 
+      The game was made using free assets.
+    </p>
+
+    <div class="contenedor-video">
+      <iframe width="560" height="315" src="https://drive.google.com/file/d/1sze5-z9lJWKYaYOi0I0QvQxxNZ2O67qD/preview" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <h2>Play Now!</h2>
+    <ul>
+      <li><a href="https://github.com/SamuelA01641383/Pan-y-Cebolla">Game repository</a></li>
+      <li><a href="https://drive.google.com/drive/folders/1iXHmLPOC4vRDvz251GbqZhiB3jzRJuFs?usp=sharing">Game ZIP on drive</a></li>
+    </ul>
+
+    <!-- Script para manejar el zoom de las imágenes -->
+  <script>
+    // Función para abrir la imagen ampliada
+    function abrirImagen(src) {
+        document.getElementById("imagenAmpliada").style.display = "flex"; // Mostrar la imagen ampliada
+        document.getElementById("imagenAmpliadaSrc").src = src; // Establecer la fuente de la imagen ampliada
+    }
+
+    // Función para cerrar la imagen ampliada
+    function cerrarImagen() {
+        document.getElementById("imagenAmpliada").style.display = "none"; // Ocultar la imagen ampliada
+    }
+
+    // Obtener todas las imágenes y agregar un evento clic a cada una para abrir la imagen ampliada
+    var imagenes = document.getElementsByClassName("imagen");
+    for (var i = 0; i < imagenes.length; i++) {
+        imagenes[i].addEventListener("click", function() {
+            abrirImagen(this.src);
+        });
+    }
+</script>
   </body>

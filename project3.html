@@ -3,8 +3,66 @@ layout: default
 ---
 <!doctype html>
 <html>
+  <style>
+    /* Estilo para las imágenes */
+    .imagen {
+        width: 350px; /* Ancho de cada imagen */
+        object-fit: cover; /* Escalar la imagen para que se ajuste al tamaño */
+        margin: 5px; /* Margen entre las imágenes */
+    }
+    /* Estilo para el contenedor principal */
+    .contenedor {
+        display: flex; /* Mostrar los elementos en línea */
+        flex-wrap: wrap; /* Permitir que los elementos se envuelvan si no hay suficiente espacio */
+        justify-content: center; /* Centrar los elementos horizontalmente */
+    }
+  
+    /* Estilo para la imagen ampliada */
+    .imagen-ampliada {
+              position: fixed; /* Fijar la posición de la imagen ampliada */
+              top: 0;
+              left: 0;
+              width: 100%; /* Ocupar todo el ancho de la ventana */
+              height: 100%; /* Ocupar toda la altura de la ventana */
+              background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+              display: none; /* Ocultar la imagen ampliada inicialmente */
+              justify-content: center;
+              align-items: center;
+              z-index: 9999; /* Asegurar que esté por encima de otros elementos */
+          }
+          /* Estilo para la imagen dentro de la imagen ampliada */
+          .imagen-ampliada img {
+              max-width: 90%; /* Limitar el tamaño máximo de la imagen */
+              max-height: 90%;
+          }
+  
+          /* Estilo para el botón de cierre */
+          .cerrar {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              color: #fff;
+              font-size: 20px;
+              cursor: pointer;
+          }
+  
+          /* Estilo para el contenedor del video */
+          .contenedor-video {
+              display: flex; /* Utilizar flexbox para centrar el contenido */
+              justify-content: center; /* Centrar horizontalmente */
+              align-items: center; /* Centrar verticalmente */
+              height: 50vh; /* Altura del viewport */
+          }
+  
+          /* Estilo para el iframe del video */
+          iframe {
+              width: 560px; /* Ancho del video */
+              height: 315px; /* Altura del video */
+          }
+  </style>
+  
   <head>
-    <title>This is the title of the webpage!</title>
+    <title>Knight</title>
   </head>
   <body>
     <p>In August 2021, I participated in the "Tu Juego a Juicio Jam 2021" and developed "Knight," 
@@ -12,5 +70,57 @@ layout: default
         I implemented the physics systems for obstacles, enabling interactions between 
         the player character and the environment. 
         Additionally, I created and programmed dynamic obstacle animations. 
-       </p>
+    </p>
+
+    <div class="contenedor">
+      <img class="imagen" src="K1.jpg" alt="Imagen 1">
+      <img class="imagen" src="k2.jpg" alt="Imagen 2">
+      <img class="imagen" src="k3.jpg" alt="Imagen 3">
+      <img class="imagen" src="k4.jpg" alt="Imagen 4">
+    </div>
+
+    <!-- Contenedor para la imagen ampliada -->
+  <div class="imagen-ampliada" id="imagenAmpliada">
+    <span class="cerrar" onclick="cerrarImagen()">X</span> <!-- Botón para cerrar la imagen ampliada -->
+    <img id="imagenAmpliadaSrc" src="" alt="Imagen Ampliada">
+  </div>
+
+    <h2>About the Game</h2>
+    <p>
+      "The jam theme was "Too Long," and it lasted for one week. "Knight" is a 2D platformer runner where a knight 
+      competes on an obstacle course to win a spear. For this challenge, he uses his uncomfortably long sword.
+    </p>
+
+    <div class="contenedor-video">
+      <iframe width="560" height="315" src="https://drive.google.com/file/d/1P_xEOW3i4Kvttfu9sAakTq6bfbNh0V3F/preview" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <h2>Play Now!</h2>
+    <ul>
+      <li><a href="https://kechus.itch.io/knight">Knight on itch.io</a></li>
+      <li><a href="https://github.com/Samuel117/Knight?tab=readme-ov-file">Game Repository</a></li>
+    </ul>
+
+    <!-- Script para manejar el zoom de las imágenes -->
+  <script>
+    // Función para abrir la imagen ampliada
+    function abrirImagen(src) {
+        document.getElementById("imagenAmpliada").style.display = "flex"; // Mostrar la imagen ampliada
+        document.getElementById("imagenAmpliadaSrc").src = src; // Establecer la fuente de la imagen ampliada
+    }
+
+    // Función para cerrar la imagen ampliada
+    function cerrarImagen() {
+        document.getElementById("imagenAmpliada").style.display = "none"; // Ocultar la imagen ampliada
+    }
+
+    // Obtener todas las imágenes y agregar un evento clic a cada una para abrir la imagen ampliada
+    var imagenes = document.getElementsByClassName("imagen");
+    for (var i = 0; i < imagenes.length; i++) {
+        imagenes[i].addEventListener("click", function() {
+            abrirImagen(this.src);
+        });
+    }
+</script>
+    
   </body>

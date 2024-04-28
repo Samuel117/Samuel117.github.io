@@ -3,16 +3,113 @@ layout: default
 ---
 <!doctype html>
 <html>
+
+<style>
+  /* Estilo para las imágenes */
+  .imagen {
+      width: 350px; /* Ancho de cada imagen */
+      object-fit: cover; /* Escalar la imagen para que se ajuste al tamaño */
+      margin: 5px; /* Margen entre las imágenes */
+  }
+  /* Estilo para el contenedor principal */
+  .contenedor {
+      display: flex; /* Mostrar los elementos en línea */
+      flex-wrap: wrap; /* Permitir que los elementos se envuelvan si no hay suficiente espacio */
+      justify-content: center; /* Centrar los elementos horizontalmente */
+  }
+
+  /* Estilo para la imagen ampliada */
+  .imagen-ampliada {
+            position: fixed; /* Fijar la posición de la imagen ampliada */
+            top: 0;
+            left: 0;
+            width: 100%; /* Ocupar todo el ancho de la ventana */
+            height: 100%; /* Ocupar toda la altura de la ventana */
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+            display: none; /* Ocultar la imagen ampliada inicialmente */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Asegurar que esté por encima de otros elementos */
+        }
+        /* Estilo para la imagen dentro de la imagen ampliada */
+        .imagen-ampliada img {
+            max-width: 90%; /* Limitar el tamaño máximo de la imagen */
+            max-height: 90%;
+        }
+
+        /* Estilo para el botón de cierre */
+        .cerrar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Estilo para el contenedor del video */
+        .contenedor-video {
+            display: flex; /* Utilizar flexbox para centrar el contenido */
+            justify-content: center; /* Centrar horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+            height: 50vh; /* Altura del viewport */
+        }
+
+        /* Estilo para el iframe del video */
+        iframe {
+            width: 560px; /* Ancho del video */
+            height: 315px; /* Altura del video */
+        }
+</style>
+
   <head>
     <title>This is the title of the webpage!</title>
   </head>
   <body>
     <p>For my high school graduation project, I created "Fix-it," a 2D platform video game using Unity and C# from December 2020 to June 2021.</p>
-    <p>Firstly, I designed and implemented the character upgrade screen, ensuring it seamlessly synchronized with the player's progress in real-time. This feature allowed players to enhance their characters as they advanced through the game.</p>
-    <p>Additionally, I crafted enemy behaviors, including movement patterns, attack strategies, and player detection mechanisms. These elements added depth to the game's challenges and interactions, keeping players engaged throughout their journey.</p>
-    <p>In terms of level design, I meticulously created layouts for all stages, aligning them with distinct thematic concepts. Each level was thoughtfully crafted to provide a unique and immersive experience for players.</p>
-    <p>Moreover, I developed movement and attack scripts for the player characters, integrating special attacks that added diversity and excitement to gameplay. These unique abilities enhanced the players' abilities to navigate and conquer obstacles within the game.</p>
-    <p>To further enrich the gaming experience, I designed and coded multiple mini-games requiring coordinated keyboard inputs and featuring randomly generated object positions or patterns. These mini-games provided players with additional challenges and opportunities for skill development.</p>
-    <p>Lastly, I implemented a binary file-based player data storage system, ensuring that player progress and achievements were securely saved and accessible across gaming sessions. This system enhanced the overall user experience by allowing players to track their advancement and accomplishments within the game.</p>
+    <p>I designed and implemented the character upgrade screen, ensuring synchronized with the player's progress in real-time. This feature allowed players to enhance their characters as they advanced through the game.</p>
+    <p>Additionally, I crafted enemy behaviors, including movement patterns, attack patterns, and player detection mechanisms.</p>
+    <p>I also created the layouts for all stages, aligning them with the thematic concepts of each level.</p>
+    <p>I developed movement and attack scripts for the player characters, integrating different special attacks for each playable character.</p>
+    <p>I designed and coded multiple mini-games requiring coordinated keyboard inputs and featuring randomly generated object positions or patterns.</p>
+    <p>Lastly, I implemented a binary file-based player data storage system, ensuring that player progress was saved and accessible.</p>
+
+    <h2>About the Game</h2>
+    <p>
+      "Fix-it" is a 2D platformer game inspired by the Mega Man saga. In this game, you play as a robot responsible for repairing buildings. 
+       When robots begin destroying buildings without warning, it becomes your duty to stop them, repair the buildings, and uncover the reason behind their actions.
+    </p>
+
+    <div class="contenedor-video">
+      <iframe width="560" height="315" src="https://drive.google.com/file/d/1jskGptWVq8SdMo33VYk-iuHjBnO9AG-H/preview" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <h2>Play Now!</h2>
+    <ul>
+      <li><a href=" https://drive.google.com/drive/folders/1KkIKydwC9JF8jaY6MA9B-3hV_duJbEcG?usp=sharing">Game ZIP on Drive</a></li>
+      <li><a href="https://github.com/Samuel117/Fix-it">Game Repository</a></li>
+    </ul>
+
+    <!-- Script para manejar el zoom de las imágenes -->
+  <script>
+    // Función para abrir la imagen ampliada
+    function abrirImagen(src) {
+        document.getElementById("imagenAmpliada").style.display = "flex"; // Mostrar la imagen ampliada
+        document.getElementById("imagenAmpliadaSrc").src = src; // Establecer la fuente de la imagen ampliada
+    }
+
+    // Función para cerrar la imagen ampliada
+    function cerrarImagen() {
+        document.getElementById("imagenAmpliada").style.display = "none"; // Ocultar la imagen ampliada
+    }
+
+    // Obtener todas las imágenes y agregar un evento clic a cada una para abrir la imagen ampliada
+    var imagenes = document.getElementsByClassName("imagen");
+    for (var i = 0; i < imagenes.length; i++) {
+        imagenes[i].addEventListener("click", function() {
+            abrirImagen(this.src);
+        });
+    }
+</script>
 
   </body>
