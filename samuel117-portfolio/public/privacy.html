@@ -36,12 +36,40 @@
     <li>Message delivery status and metadata provided by Meta's API</li>
   </ul>
   <p><strong>Data managed internally on behalf of the Seminary:</strong></p>
+
+  <p><em>Donor data:</em></p>
   <ul>
-    <li>Donor full name</li>
-    <li>WhatsApp phone number</li>
+    <li>Full name of the account holder (<code>contractHolder</code>, <code>accountHolderName</code>)</li>
+    <li>WhatsApp number, mobile phone number, and home phone number</li>
     <li>Email address (optional)</li>
-    <li>Donation history and payment status</li>
-    <li>WhatsApp message history sent via the API</li>
+    <li>Date of birth</li>
+    <li>Client number and internal reference</li>
+    <li>Donor type (Prospect / Donor) and payment modality (direct debit, home collection, deposit/transfer)</li>
+    <li>Banking information: bank name, account type (credit card / debit card / CLABE), and account number</li>
+    <li>Active/inactive status and deactivation date</li>
+  </ul>
+
+  <p><em>Payment data:</em></p>
+  <ul>
+    <li>Expected amount and amount paid per period</li>
+    <li>Payment date and status (paid / unpaid)</li>
+    <li>Transaction reference code</li>
+  </ul>
+
+  <p><em>Message history:</em></p>
+  <ul>
+    <li>Recipient donor name</li>
+    <li>Message type (first contact, payment reminder, thank you, birthday, campaign, direct send)</li>
+    <li>Meta message category (MARKETING / UTILITY)</li>
+    <li>Send date and time</li>
+    <li>Delivery result (successful / failed)</li>
+    <li>Number of messages sent per operation</li>
+  </ul>
+
+  <p><em>Message configuration:</em></p>
+  <ul>
+    <li>Configured WhatsApp templates (name, ID, language, Meta category)</li>
+    <li>Dynamic variables per template</li>
   </ul>
 
   <h2>3. How We Process Data</h2>
